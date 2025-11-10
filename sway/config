@@ -1,0 +1,444 @@
+#
+#
+# # It will not be overwritten, so edit it as you like.
+# #
+# # Should you change your keyboard layout some time, delete
+# # this file and re-run i3-config-wizard(1).
+# #
+#
+# # i3 config file (v4)
+# #
+# # Please see https://i3wm.org/docs/userguide.html for a complete reference!
+#
+# set $mod Mod4
+#
+# # Font for window titles. Will also be used by the bar unless a different font
+# # is used in the bar {} block below.
+# font pango:"JetBrainsMono Nerd Font Mono" 12
+#
+# # Start XDG autostart .desktop files using dex. See also
+# # https://wiki.archlinux.org/index.php/XDG_Autostart
+# exec --no-startup-id dex --autostart --environment i3
+#
+# # The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# # they are included here as an example. Modify as you see fit.
+#
+# # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# # screen before suspend. Use loginctl lock-session to lock your screen.
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#
+# # NetworkManager is the most popular way to manage wireless networks on Linux,
+# # and nm-applet is a desktop environment-independent system tray GUI for it.
+# exec --no-startup-id nm-applet
+#
+# # Use pactl to adjust volume in PulseAudio.
+# set $refresh_i3status killall -SIGUSR1 i3status
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+#
+# # Use Mouse+$mod to drag floating windows to their wanted position
+# floating_modifier $mod
+#
+# # move tiling windows via drag & drop by left-clicking into the title bar,
+# # or left-clicking anywhere into the window while holding the floating modifier.
+# # tiling_drag modifier titlebar
+#
+# # start a terminal
+# bindsym $mod+Return exec kitty
+#
+# # kill focused window
+# bindsym $mod+Shift+q kill
+#
+# # start dmenu (a program launcher)
+# #bindsym $mod+d exec --no-startup-id dmenu_run
+# # A more modern dmenu replacement is rofi:
+# bindsym $mod+d exec "rofi -modi drun,run -show drun"
+#
+# # change focus
+# bindsym $mod+Left focus left
+# bindsym $mod+Down focus down
+# bindsym $mod+Up focus up
+# bindsym $mod+Right focus right
+#
+# #Alt for vim motion
+# bindsym $mod+h focus left
+# bindsym $mod+j focus down
+# bindsym $mod+k focus up
+# bindsym $mod+l focus right
+#
+# # move focused window
+#
+# bindsym $mod+Shift+Left move left
+# bindsym $mod+Shift+Down move down
+# bindsym $mod+Shift+Up move up
+# bindsym $mod+Shift+Right move right
+#
+# # move focused windows with vim motion
+#
+# bindsym $mod+Shift+h move left
+# bindsym $mod+Shift+j move down
+# bindsym $mod+Shift+k move up
+# bindsym $mod+Shift+l move right
+#
+# # split in horizontal orientation
+# bindsym $mod+b split h
+#
+# # split in vertical orientation
+# bindsym $mod+v split v
+#
+# # enter fullscreen mode for the focused container
+# bindsym $mod+f fullscreen toggle
+#
+# # change container layout (stacked, tabbed, toggle split)
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+# bindsym $mod+e layout toggle split
+#
+# # toggle tiling / floating
+# bindsym $mod+Shift+space floating toggle
+#
+# # change focus between tiling / floating windows
+# bindsym $mod+space focus mode_toggle
+#
+# # focus the parent container
+# bindsym $mod+a focus parent
+#
+# # focus the child container
+# bindsym $mod+z focus child
+#
+# # Define names for default workspaces for which we configure key bindings later on.
+# # We use variables to avoid repeating the names in multiple places.
+# set $ws1 "1"
+# set $ws2 "2"
+# set $ws3 "3"
+# set $ws4 "4"
+# set $ws5 "5"
+# set $ws6 "6"
+# set $ws7 "7"
+# set $ws8 "8"
+# set $ws9 "9"
+# set $ws10 "10"
+#
+# # switch to workspace
+# bindsym $mod+1 workspace number $ws1
+# bindsym $mod+2 workspace number $ws2
+# bindsym $mod+3 workspace number $ws3
+# bindsym $mod+4 workspace number $ws4
+# bindsym $mod+5 workspace number $ws5
+# bindsym $mod+6 workspace number $ws6
+# bindsym $mod+7 workspace number $ws7
+# bindsym $mod+8 workspace number $ws8
+# bindsym $mod+9 workspace number $ws9
+# bindsym $mod+0 workspace number $ws10
+#
+# # move focused container to workspace
+# bindsym $mod+Shift+1 move container to workspace number $ws1
+# bindsym $mod+Shift+2 move container to workspace number $ws2
+# bindsym $mod+Shift+3 move container to workspace number $ws3
+# bindsym $mod+Shift+4 move container to workspace number $ws4
+# bindsym $mod+Shift+5 move container to workspace number $ws5
+# bindsym $mod+Shift+6 move container to workspace number $ws6
+# bindsym $mod+Shift+7 move container to workspace number $ws7
+# bindsym $mod+Shift+8 move container to workspace number $ws8
+# bindsym $mod+Shift+9 move container to workspace number $ws9
+# bindsym $mod+Shift+0 move container to workspace number $ws10
+#
+# # reload the configuration file
+# bindsym $mod+Shift+c reload
+# # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# bindsym $mod+Shift+r restart
+# # exit i3 (logs you out of your X session)
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+#
+# ## Clipboard Screenshots
+# bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+# bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+# bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+#
+# # resize window (you can also use the mouse for that)
+# mode "resize" {
+#         # These bindings trigger as soon as you enter the resize mode
+#
+#         # Pressing left will shrink the window’s width.
+#         # Pressing right will grow the window’s width.
+#         # Pressing up will shrink the window’s height.
+#         # Pressing down will grow the window’s height.
+#         #bindsym j resize shrink width 10 px or 10 ppt
+#         #bindsym k resize grow height 10 px or 10 ppt
+#         #bindsym l resize shrink height 10 px or 10 ppt
+#         #bindsym semicolon resize grow width 10 px or 10 ppt
+#
+#         # same bindings, but for the arrow keys
+#         bindsym Left resize shrink width 5 px or 5 ppt
+#         bindsym Down resize grow height 5 px or 5 ppt
+#         bindsym Up resize shrink height 5 px or 5 ppt
+#         bindsym Right resize grow width 5 px or 5 ppt
+#
+#         # back to normal: Enter or Escape or $mod+r
+#         bindsym Return mode "default"
+#         bindsym Escape mode "default"
+#         bindsym $mod+r mode "default"
+# }
+#
+# bindsym $mod+r mode "resize"
+#
+# bar {
+#         status_command i3status
+# }
+#
+# #Wallpaper with feh
+# output "*" bg /home/waldy/Pictures/wallpaperflare.com_wallpaper.jpg fill 
+# ABOVE IS OLD CONFIG FROM I3
+exec mako
+exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
+#
+# # Get the list with command "swaymsg -t get_inputs" then get the Identifier
+input 9370:23599:XCTECH_Wireless-Receiver {
+    left_handed false 
+    tap enabled
+    natural_scroll disabled
+    dwt enabled
+    accel_profile "flat"
+    pointer_accel 0.1 # Mouse sensitivity
+  }
+#
+#
+# Update screen resolution and refresh rate (Get the list with "swaymsg -t get_outputs")
+output HDMI-A-3 mode 1920x1080@75Hz
+#
+# Update screen color profile to sRGB
+
+output HDMI-A-3 color_profile srgb
+
+#
+# autostart
+exec 			udiskie
+exec 			gammastep
+
+# style
+#
+font pango:"JetBrainsMono Nerd Font Mono" 12
+# font 			            pango:monospace 16px 
+default_border 		        pixel 	2
+titlebar_border_thickness 	2
+gaps 			            top	2
+gaps 			            bottom	2
+gaps 			            left	2
+gaps 			            right	2
+gaps 			            inner 	5
+
+# window decorations
+# class			        border	    background	text        indicator   child_border
+client.focused          #A4B9EF     #332E41     #E5B4E2     #DADAE8     #A4B9EF
+client.focused_inactive #A4B9EF     #332E41     #E5B4E2     #DADAE8     #A4B9EF
+client.unfocused        #A4B9EF     #1E1E28     #DADAE8     #DADAE8     #575268
+client.urgent           #A4B9EF     #575268     #EBDDAA     #DADAE8     #EBDDAA
+
+# import GTK settings
+exec_always $HOME/bin/import-gsettings.sh \
+	gtk-theme:gtk-theme-name \
+	icon-theme:gtk-icon-theme-name \
+	cursor-theme:gtk-cursor-theme-name\
+	font-name:gtk-font-name
+
+# window rules
+# for_window 	[workspace="2"] 	    layout 	tabbed
+# for_window 	[workspace="5"] 	    layout 	tabbed
+# for_window 	[app_id="libera"] 	    floating 	    enable, resize set height 500 px,  resize set width 900 px,     move position 1000 5
+# for_window 	[app_id="tilde"] 	    floating 	    enable, resize set height 500 px,  resize set width 900 px,     move position 950  325
+# for_window 	[app_id="cava"] 	    floating 	    enable, resize set height 525 px,  resize set width 750 px,     move position 1135 490
+# for_window  [class="Signal Beta"]   floating        enable, resize set height 980 px,  resize set width 800 px,     move position 30   25 
+# for_window  [class="Spotify"]       floating        enable, resize set height 650 px,  resize set width 1050 px,    move position 15   15 
+# for_window 	[app_id="veracrypt"] 	floating 	    enable
+# for_window 	[app_id="python3"] 	    floating 	    enable
+# for_window 	[app_id="mpv"]		    inhibit_idle	fullscreen
+# for_window	[app_id="imv"]	        border		    pixel 1
+
+# workspace assignments
+# assign 		[app_id="amfora"] 		    2
+# assign 		[app_id="neomutt"] 		    4
+# assign 		[class="Signal Beta"] 		4
+# assign 		[app_id="tilde"] 		    4
+# assign 		[app_id="libera"] 		    4
+# assign 		[app_id="org.pwmt.zathura"] 5
+# assign 		[class="Gimp-2.10"] 		7
+# assign 		[class="Krita"] 		    7
+# assign 		[class="Spotify"] 		    10
+# assign 		[app_id="audacity"] 		8
+# assign      [app_id="cava"]             10
+
+
+## logo key
+set $mod Mod4
+
+## home row direction keys
+set 	$left 	h
+set 	$down 	j
+set 	$up 	k
+set 	$right 	l
+
+## terminal emulator
+set 	$term 	kitty
+
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu "rofi -modi drun,run -show drun"
+
+## Output configuration
+output     *   bg      $HOME/Pictures/evening-sky.jpeg stretch
+
+# Behavior
+focus_follows_mouse 	yes
+
+bindsym $mod+Control+Shift+alt+l exec 'swaylock -f'
+
+# Idle configuration
+exec swayidle -w \
+	timeout 600 'swaylock -f' \
+	timeout 1800 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+	before-sleep 'swaylock -f'
+
+# key bindings
+# start a terminal
+bindsym $mod+Return exec $term
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start your launcher
+bindsym 	$mod+space 	        exec 	$menu
+bindsym     $mod+Shift+space    exec    $HOME/bin/online-search.sh
+
+# dismiss notifications
+bindsym 	Control+grave 	exec 	makoctl dismiss
+
+# screenshot with grim and swappy
+# bindsym print               exec $HOME/bin/screenshot.sh
+# bindsym Shift+print         exec $HOME/bin/partial-screenshot.sh
+
+# floating window controls (also works for non-floating windows)
+floating_modifier 		$mod 	normal
+
+# reload the configuration file
+bindsym 	$mod+r 		reload
+
+# restart sway
+bindsym 	$mod+Shift+e 	exec 	swaymsg exit
+
+# Moving around:
+# Move your focus around
+bindsym 	$mod+$left 	focus 	left
+bindsym 	$mod+$down 	focus 	down
+bindsym 	$mod+$up 	focus 	up
+bindsym 	$mod+$right focus 	right
+
+# Move the focused window with the same, but add Shift
+bindsym 	$mod+Shift+$left 	move 	left
+bindsym 	$mod+Shift+$down 	move 	down
+bindsym 	$mod+Shift+$up 		move 	up
+bindsym 	$mod+Shift+$right 	move 	right
+
+# Workspaces:
+# Switch to workspace
+bindsym 	$mod+1 		workspace 	number 	1
+bindsym 	$mod+2 		workspace 	number 	2
+bindsym 	$mod+3 		workspace 	number 	3
+bindsym 	$mod+4 		workspace 	number 	4
+bindsym 	$mod+5 		workspace 	number 	5
+bindsym 	$mod+6 		workspace 	number 	6
+bindsym 	$mod+7 		workspace 	number 	7
+bindsym 	$mod+8 		workspace 	number 	8
+bindsym 	$mod+9 		workspace 	number 	9
+bindsym 	$mod+0 		workspace 	number 	10
+
+# switch between present and previous workspace
+bindsym 	$mod+Tab 	workspace 	back_and_forth
+
+# Move focused container to workspace
+bindsym 	$mod+Shift+1 	move 	container to 	workspace number 1
+bindsym 	$mod+Shift+2	move 	container to 	workspace number 2
+bindsym 	$mod+Shift+3 	move 	container to 	workspace number 3
+bindsym 	$mod+Shift+4 	move 	container to 	workspace number 4
+bindsym 	$mod+Shift+5 	move 	container to 	workspace number 5
+bindsym 	$mod+Shift+6 	move 	container to 	workspace number 6
+bindsym 	$mod+Shift+7 	move 	container to 	workspace number 7
+bindsym 	$mod+Shift+8 	move 	container to 	workspace number 8
+bindsym 	$mod+Shift+9 	move 	container to 	workspace number 9
+bindsym 	$mod+Shift+0 	move 	container to 	workspace number 10
+
+
+# Layout stuff:
+
+# You can "split" the current object of your focus 
+bindsym 	$mod+b 		splith
+bindsym 	$mod+v 		splitv
+
+# Switch the current container between different layout styles
+bindsym 	$mod+m 		layout 		tabbed
+bindsym 	$mod+t 		layout 		toggle split
+
+# Make the current focus fullscreen
+bindsym 	$mod+f 		fullscreen
+
+# Toggle floating 
+bindsym 	$mod+s 		floating 	toggle
+
+# Toggle between floating and other layout
+bindsym 	$mod+Shift+s 	focus 		mode_toggle
+
+# Move floating windows around
+bindsym 	$mod+Up 		    move 	up 	    1
+bindsym 	$mod+Shift+Up 	    move 	up 	    10
+bindsym 	$mod+Left 		    move 	left 	1
+bindsym 	$mod+Shift+Left     move 	left 	10
+bindsym 	$mod+Right 		    move 	right 	1
+bindsym 	$mod+Shift+Right    move 	right 	10
+bindsym 	$mod+Down 		    move 	down 	1
+bindsym 	$mod+Shift+Down 	move 	down 	10
+
+# Move focus to the parent container
+bindsym 	$mod+a 		focus 	parent
+
+# Move focus to the child container
+bindsym 	$mod+Shift+a 		focus 	child
+
+# Scratchpad:
+# Move the currently focused window to the scratchpad
+bindsym 	$mod+Shift+minus 	move 	scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+bindsym 	$mod+minus 		scratchpad 	show
+
+# Resizing containers:
+bindsym 	$mod+alt+$left 		resize shrink 	width 	20px
+bindsym 	$mod+alt+$up 		resize grow 	height 	20px
+bindsym 	$mod+alt+$down 		resize shrink 	height 	20px
+bindsym 	$mod+alt+$right 	resize grow 	width 	20px
+
+## Special keys
+bindsym --locked XF86AudioRaiseVolume   exec $HOME/bin/volume-up.sh
+bindsym --locked XF86AudioLowerVolume   exec $HOME/bin/volume-down.sh
+bindsym --locked XF86AudioMute          exec pactl set-sink-mute $(pactl list | rg 'Sink #' | sed 's/Sink #//') toggle
+bindsym --locked XF86MonBrightnessUp    exec light -A 10 && notify-send " Light" "Brightness: $(light)%" --hint="int:value:$(light)"
+bindsym --locked XF86MonBrightnessDown  exec light -U 10 && notify-send " Light" "Brightness: $(light)%" --hint="int:value:$(light)"
+bindsym --locked XF86AudioPlay          exec playerctl -p spotify play-pause
+bindsym --locked XF86AudioNext          exec playerctl -p spotify next
+bindsym --locked XF86AudioPrev          exec playerctl -p spotify previous
+bindsym --locked $mod+d                 exec sh -c "notify-send -i $HOME/pictures/icons/dnd.png '  Do Not Disturb' 'Turning on Do Not Disturb Mode' && sleep 2 && makoctl mode -s do-not-disturb"
+bindsym --locked $mod+Shift+d           exec sh -c "makoctl mode -s default && notify-send -i $HOME/pictures/icons/dnd.png '  Do Not Disturb' 'Do Not Disturb Mode disabled'"
+
+# status Bar:
+bar {
+    swaybar_command waybar
+    }
+}
+
+include /etc/sway/config.d/*
+bindsym Ctrl+Print exec grim - | wl-copy    
+bindsym Ctrl+Shift+Print exec grim -g "$(slurp)" - | wl-copy    
+exec /usr/lib/xdg-desktop-portal-wlr
+exec /usr/lib/xdg-desktop-portal
+output * allow_tearing yes
+output * max_render_time off
